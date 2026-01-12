@@ -1,10 +1,12 @@
+"use cache";
 import { CalendarIcon, RocketIcon } from "lucide-react";
-import SectionHeader from "../common/section-header";
+import SectionHeader from "@/components/ui/common/section-header";
 import ProductCard from "@/components/products/product-card";
-import EmptyState from "../common/empty-state";
+import EmptyState from "@/components/ui/common/empty-state";
+import { getRecentlyLaunchedProducts } from "@/lib/products/product-select";
 
-export default function RecentlyLaunchedProducts() {
-  const recentlyLaunchedProducts: typeof ProductCard extends React.FC<{product: infer T}> ? T[] : never = [];
+export default async function RecentlyLaunchedProducts() {
+  const recentlyLaunchedProducts = await getRecentlyLaunchedProducts();
   return (
     <section className="py-20">
       <div className="wrapper space-y-12">

@@ -1,29 +1,32 @@
+"use cache";
 import SectionHeader from "@/components/ui/common/section-header";
 import { ArrowUpRightIcon, StarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ProductCard from "@/components/products/product-card";
+import { getFeaturedProducts } from "@/lib/products/product-select";
 
-const featuredProducts = [
-  {
-    id: 1,
-    name: "ParityKit",
-    description: "A toolkit for creating parity products",
-    tags: ["SaaS", "Pricing", "Global"],
-    votes: 651,
-    isFeatured: true,
-  },
-  {  
-    id: 2,
-    name: "Modern Full Stack Next.js Course",
-    description: "Learn to build production-ready full stack apps with Next.js",
-    tags: ["Next.js", "Full-Stack", "Course"],
-    votes: 124,
-    isFeatured: false,
-  },
-];
+// const featuredProducts = [
+//   {
+//     id: 1,
+//     name: "ParityKit",
+//     description: "A toolkit for creating parity products",
+//     tags: ["SaaS", "Pricing", "Global"],
+//     votes: 651,
+//     isFeatured: true,
+//   },
+//   {
+//     id: 2,
+//     name: "Modern Full Stack Next.js Course",
+//     description: "Learn to build production-ready full stack apps with Next.js",
+//     tags: ["Next.js", "Full-Stack", "Course"],
+//     votes: 124,
+//     isFeatured: false,
+//   },
+// ];
 
-export default function FeaturedProducts() {
+export default async function FeaturedProducts() {
+  const featuredProducts = await getFeaturedProducts();
   return (
     <section className="py-20 bg-muted/20">
       <div className="wrapper">
@@ -40,9 +43,9 @@ export default function FeaturedProducts() {
           </Button>
         </div>
         <div className="grid-wrapper">
-            {featuredProducts.map((product) => (
+          {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
-            ))}
+          ))}
         </div>
       </div>
     </section>
