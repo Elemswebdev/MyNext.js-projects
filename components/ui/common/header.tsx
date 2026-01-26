@@ -4,20 +4,12 @@ import {
   LoaderIcon,
   SparkleIcon,
   SparklesIcon,
-  UserIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../button";
-import {
-  SignedIn,
-  SignedOut,
-  SignIn,
-  SignInButton,
-  SignUp,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { Suspense } from "react";
+import CustomUserButton from "./custom-user-button";
 
 const Logo = () => {
   return (
@@ -33,7 +25,6 @@ const Logo = () => {
 };
 
 export default function Header() {
-  const isSignedIn = false;
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="wrapper px-12">
@@ -77,7 +68,7 @@ export default function Header() {
                     Submit Project
                   </Link>
                 </Button>
-                <UserButton />
+                <CustomUserButton />
               </SignedIn>
             </Suspense>
           </div>
