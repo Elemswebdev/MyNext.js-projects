@@ -1,13 +1,8 @@
-"use cache";
-
 import VotingButtons from "@/components/products/voting-buttons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/ui/common/section-header";
-import {
-  getFeaturedProducts,
-  getProductBySlug,
-} from "@/lib/products/product-select";
+import { getProductBySlug } from "@/lib/products/product-select";
 import {
   ArrowLeftIcon,
   CalendarIcon,
@@ -17,13 +12,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
-export const generateStaticParams = async () => {
-  const products = await getFeaturedProducts();
-  return products.map((product) => ({
-    slug: product.slug.toString(),
-  }));
-};
 
 export default async function Product({
   params,
@@ -85,7 +73,7 @@ export default async function Product({
                   {
                     label: "Launched:",
                     value: new Date(
-                      product.createdAt?.toISOString() ?? ""
+                      product.createdAt?.toISOString() ?? "",
                     ).toLocaleDateString(),
                     icon: CalendarIcon,
                   },

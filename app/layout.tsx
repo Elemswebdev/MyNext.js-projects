@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/ui/common/header";
 import Footer from "@/components/ui/common/footer";
 import { ClerkProvider } from "@clerk/nextjs";
-
-const outfit = Outfit({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
 //   title: " iBuiltThis - Share Your Creations, Discover New Launches",
@@ -20,8 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={`${outfit.className} antialiased`}>
+      <html
+        lang="en"
+        style={{
+          fontFamily:
+            "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Outfit', sans-serif",
+        }}
+      >
+        <body className="antialiased">
           <Header />
           {children}
           <Footer />

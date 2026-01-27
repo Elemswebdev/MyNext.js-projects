@@ -1,4 +1,3 @@
-"use cache";
 import SectionHeader from "@/components/ui/common/section-header";
 import { CompassIcon } from "lucide-react";
 import ProductExplorer from "@/components/products/product-explorer";

@@ -4,7 +4,6 @@ import { desc, eq } from "drizzle-orm";
 import { connection } from "next/server";
 
 export async function getFeaturedProducts() {
-  "use cache";
   const productsData = await db
     .select()
     .from(products)
@@ -42,7 +41,7 @@ export async function getRecentlyLaunchedProducts() {
   return productsData.filter(
     (product) =>
       product.createdAt &&
-      new Date(product.createdAt.toISOString()) >= oneWeekAgo
+      new Date(product.createdAt.toISOString()) >= oneWeekAgo,
   );
 }
 
